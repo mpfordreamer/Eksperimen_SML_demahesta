@@ -8,6 +8,10 @@ on:
       - 'preprocessing/automate_Demahesta.py'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  actions: write
+
 jobs:
   preprocess_data:
     runs-on: ubuntu-latest
