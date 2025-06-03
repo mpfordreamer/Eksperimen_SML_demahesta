@@ -29,10 +29,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pandas numpy nltk scikit-learn
-          # Pisahkan perintah download NLTK untuk memastikan semuanya dieksekusi
-          python -c "import nltk; nltk.download('punkt')"
-          python -c "import nltk; nltk.download('stopwords')"
-          python -c "import nltk; nltk.download('punkt_tab')" # Pastikan ini dieksekusi 
+          # Gunakan nltk.downloader langsung untuk memastikan pengunduhan
+          python -m nltk.downloader punkt
+          python -m nltk.downloader stopwords
+          python -m nltk.downloader punkt_tab 
 
       - name: Run Preprocessing Script
         run: |
