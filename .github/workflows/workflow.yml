@@ -37,7 +37,7 @@ jobs:
           python automate_Demahesta.py
 
       - name: Upload Preprocessed Data
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: crypto-sentiment-data
           path: |
