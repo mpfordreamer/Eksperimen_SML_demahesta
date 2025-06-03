@@ -29,9 +29,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pandas numpy nltk scikit-learn
-          pip install https://github.com/nltk/nltk_data/raw/gh-pages/packages/tokenizers/punkt.zip
-          pip install https://github.com/nltk/nltk_data/raw/gh-pages/packages/corpora/stopwords.zip
-          pip install https://github.com/nltk/nltk_data/raw/gh-pages/packages/tokenizers/punkt_tab.zip
+          
+          # Specify the NLTK_DATA directory so that NLTK knows where to look.
+          echo "NLTK_DATA=$(pwd)/nltk_data" >> $GITHUB_ENV
+          mkdir -p $(pwd)/nltk_data
+
+          # Download NLTK packages using the downloader, one at a time for log clarity
+          python -m nltk.downloader -d $(pwd)/nltk_data punkt
+          python -m nltk.downloader -d $(pwd)/nltk_data stopwords
+          python -m nltk.downloader -d $(pwd)/nltk_data punkt_tab  
 
       - name: Run Preprocessing Script
         run: |
