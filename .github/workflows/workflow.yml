@@ -29,8 +29,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pandas numpy nltk scikit-learn
-          # Gunakan satu perintah nltk.downloader untuk semua paket
-          python -m nltk.downloader punkt stopwords punkt_tab
+          # Cara alternatif untuk mengunduh data NLTK:
+          # Install paket yang menyediakan data NLTK
+          pip install https://github.com/nltk/nltk_data/raw/gh-pages/packages/tokenizers/punkt.zip#egg=punkt
+          pip install https://github.com/nltk/nltk_data/raw/gh-pages/packages/corpora/stopwords.zip#egg=stopwords
+          pip install https://github.com/nltk/nltk_data/raw/gh-pages/packages/tokenizers/punkt_tab.zip#
 
       - name: Run Preprocessing Script
         run: |
